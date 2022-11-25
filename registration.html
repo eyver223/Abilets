@@ -1,0 +1,26 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>регистрация</title>
+    <link rel="stylesheet" href="stylereg.css">
+</head>
+<body class="body"  style="overflow: auto;">
+    <div class="pop_up" id="pop_up">
+        <div class="pop_up_container">
+            <div class="pop_up_body" id="pop_up_body">
+                <p id="text_autoriz">регистрация</p>
+                <form action="check.php" method="post">
+                    <input type="text" name="login" id="login" placeholder="Логин">
+                    <input type="text" name="pass" id="pass" placeholder="Пароль">
+                    <input type="text" name="surnames" id="surnames" placeholder="Фамилия">
+                    <button type="submit" name="btn_sub" class="btn_submit">Зарегистрироваться</button>                
+                </form>                 
+            <div class="reg_close" id="reg_close">
+                <a href="index.php">&#10006</a></div>           
+            </div>           
+        </div>
+    </div>
+</body>
+</html>
