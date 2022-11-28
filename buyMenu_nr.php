@@ -41,7 +41,7 @@ while($bilet2=mysqli_fetch_array($biletmas2)){
             ?>
             <div>
                 <button id="button_Buynow" type="submit" class="button_Buynow" data-id="<?php echo $bilet['Bilets_id'];?>">
-                    <div class="form-submit__label">Купить за</div>
+                    <div class="form-submit__label">Купить за <?echo $bilet2['Cost'];?></div>
                 </button>
             </div>                 
         <div class="reg_close" id="reg_close">
