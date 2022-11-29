@@ -10,6 +10,7 @@ if($_SESSION['user']){
     }
 }
  ?>
+ 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -20,7 +21,7 @@ if($_SESSION['user']){
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="jquery.js"></script>  
 </head>
-<body class="body"  >  
+<body class="body" style="overflow-x:hidden ; " >  
 <?php
  if($mysql->connect_errno) exit('ошибка подключения к бд');
  $select="SELECT * FROM `CountryCity`";
