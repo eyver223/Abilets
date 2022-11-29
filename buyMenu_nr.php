@@ -14,6 +14,7 @@ include "connectbd.php";
 $Bilet_id=$_GET['id'];
 $biletmas2= mysqli_query($mysql, "SELECT `B`.*, `a1`.`CountryCity_id`, `a1`.`Name` as `from` , `a2`.`CountryCity_id`, `a2`.`Name` as `wheres` FROM `Bilets` as `B` LEFT JOIN `CountryCity` as `a1` ON (`a1`.`CountryCity_id` = `B`.`CountryCityFrom_id`) LEFT JOIN `CountryCity` as `a2` ON (`a2`.`CountryCity_id` = `b`.`CountryCityWhere_id`) WHERE `b`.`Bilets_id`=$Bilet_id;");
 
+
 while($bilet2=mysqli_fetch_array($biletmas2)){
     ?>
     <div class="pop_up" id="pop_up">
@@ -41,7 +42,7 @@ while($bilet2=mysqli_fetch_array($biletmas2)){
             ?>
             <div>
                 <button id="button_Buynow" type="submit" class="button_Buynow" data-id="<?php echo $bilet['Bilets_id'];?>">
-                    <div class="form-submit__label">Купить за</div>
+                    <div class="form-submit__label">Купить за <?echo $bilet2['Cost'];?></div>
                 </button>
             </div>                 
         <div class="reg_close" id="reg_close">

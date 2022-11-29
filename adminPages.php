@@ -9,6 +9,7 @@ if(!$_SESSION['user']){
         header('Location: logindex.php');
     }
 }  
+
  ?>
  <!DOCTYPE html>
 <html lang="ru">

@@ -15,8 +15,7 @@ if(!$_SESSION['user']){
     <title>авибилеты</title>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="jquery.js"></script>
-   
-   
+     
 </head>
 <body class="body"  >  
 <?php
