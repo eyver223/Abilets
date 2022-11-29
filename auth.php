@@ -8,6 +8,7 @@
     if(!$login || !$pass){
         $error='вы не ввели данные';
     }
+    
     $mysql = new mysqli('localhost', 'root', '', 'AviaBD');
     $result=$mysql->query("SELECT * FROM `User` WHERE `login` = '$login' AND `password` = '$pass'");
     $user=$result->fetch_assoc();

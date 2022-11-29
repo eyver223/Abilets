@@ -3,6 +3,7 @@ var selectFrom = document.getElementById("selectFrom");
 var selectWhere = document.getElementById("selectWhere");
 const mainB=document.getElementById('mainBilets');
 const nt=document.getElementById('notfounddiv');
+
 $(function(){
     btnserch.addEventListener('click',function(e){
         e.preventDefault();

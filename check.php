@@ -14,6 +14,7 @@ $login = $_POST['login'];
     $query= "INSERT INTO `User` (`User_Id`, `Role_id`, `Surname`, `login`, `password`) VALUES (NULL, '3', '$surnames', '$login', '$pass');";
     mysqli_query($link, $query);
 
+    
     $result=$link->query("SELECT * FROM `User` WHERE `login` = '$login' AND `password` = '$pass'");
     $user=$result->fetch_assoc();
 

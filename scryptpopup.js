@@ -4,6 +4,7 @@ const popUp=document.getElementById('pop_up');
 const popUp2=document.getElementById('pop_up2');
 const regist= document.getElementById('pop_up_registr');
 
+
 openPopUp.addEventListener('click',function(e){
 e.preventDefault();
 popUp.classList.add('active');
