@@ -30,7 +30,7 @@ while($bilet2=mysqli_fetch_array($biletmas2)){
             <div class="bagage">
                 <p class="textbagage">+ 500 ₽</p>
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" class="cb_baggage" id="cb_baggage" onclick="checkCB()">
                     <span class="slider round"></span>
                 </label>
             </div>
@@ -42,7 +42,7 @@ while($bilet2=mysqli_fetch_array($biletmas2)){
             ?>
             <div>
                 <button id="button_Buynow" type="submit" class="button_Buynow" data-id="<?php echo $bilet['Bilets_id'];?>">
-                    <div class="form-submit__label">Купить за <?echo $bilet2['Cost'];?></div>
+                    <div class="form-submit__label" id="buycost">Купить за <?echo $bilet2['Cost'];?></div>
                 </button>
             </div>                 
         <div class="reg_close" id="reg_close">
@@ -54,7 +54,13 @@ while($bilet2=mysqli_fetch_array($biletmas2)){
 }
 ?>
     <script>
-
+        function checkCB(){
+            var cb=document.getElementById('cb_baggage');
+            if(cb.checked==true){
+                document.querySelector('buycost').innerHTML+500;
+            }
+            else{}
+        }
     </script>
 </body>
 </html>
