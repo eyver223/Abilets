@@ -100,9 +100,11 @@ if(!$_SESSION['user']){
                 ?>
                 <p data-datehow="<?php echo ($biletDates)?>"><?php echo $biletdeptime?></p>
                 <br>
+                <a href="buyMenu_nr.php?id=<?php echo $bilet['Bilets_id'];?>">
                 <button id="buttonBuy" type="submit" class="button_Buy">
                     <div class="form-submit__label">Купить</div>
                 </button>
+                </a>
             </div>              
         </div>
     </div>
@@ -112,6 +114,7 @@ if(!$_SESSION['user']){
     <div id="notfounddiv" class="notfounddiv hide">ничего не найдено (</div>
     <script src="scryptRighntMenu.js"></script>
     <script src="serchjs.js"></script>
+    <script src="btnbuyscr.js"></script>
     
     
 </body>

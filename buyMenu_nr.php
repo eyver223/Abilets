@@ -1,4 +1,5 @@
 <?
+session_start();
 include "connectbd.php"; 
 ?>
 <html lang="ru">
@@ -30,20 +31,28 @@ while($bilet2=mysqli_fetch_array($biletmas2)){
             <div class="bagage">
                 <p class="textbagage">+ 500 ₽</p>
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" class="cb_baggage" id="cb_baggage">
                     <span class="slider round"></span>
                 </label>
             </div>
             <p>Время пути</p>
             <p><?echo $bilet2['travel_time']?></p>
+            <?if(!$_SESSION['user']){
+               ?><form action="">
+                <input type="text">
+               </form>
+               <? 
+            }
+            ?>
             </div>
             <?
             $cost=$bilet2['Cost']
             ?>
             <div>
                 <button id="button_Buynow" type="submit" class="button_Buynow" data-id="<?php echo $bilet['Bilets_id'];?>">
-                    <div class="form-submit__label">Купить за <?echo $bilet2['Cost'];?></div>
+                    <div class="form-submit__label" id="buycost">Купить за <?echo $bilet2['Cost'];?></div>
                 </button>
+                
             </div>                 
         <div class="reg_close" id="reg_close">
             <a href="index.php">&#10006</a></div>           
@@ -52,9 +61,8 @@ while($bilet2=mysqli_fetch_array($biletmas2)){
 </div>
 <?
 }
-?>
-    <script>
 
-    </script>
+?>
+    
 </body>
 </html>
