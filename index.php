@@ -19,7 +19,10 @@ if($_SESSION['user']){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>авибилеты</title>
     <link rel="stylesheet" href="style.css">
+    <script src="scryptpopup.js"></script>
+    <script src="serchjs.js"></script> 
     <script type="text/javascript" src="jquery.js"></script>  
+    <script src="btnbuyscr.js"></script>
 </head>
 <body class="body" style="overflow-x:hidden ; " >  
 <?php
@@ -56,7 +59,7 @@ if($_SESSION['user']){
         <h1 class="rty">Поиск авиабилетов</h1>
     </div>
     <div class="page-header__form">
-        <div action="/search" class="avia_form_home" >
+        <div action="serch.js" class="avia_form_home" >
             <select id="selectFrom" name="CountryCityFrom_id" class="form_search1">
             <option hidden value="">откуда</option>
                 <?php while(($city=$cityes->fetch_assoc())>0):?>
@@ -71,11 +74,11 @@ if($_SESSION['user']){
             </select>
             <input type="date" id="datew" name="date" class="form_search3"/>
             <div class="avia-form__submit">
-                <form  >
+               <!-- <form  method="POST"> -->
                     <button name="buttonSearch" id="buttonSearch" type="submit" class="button_form_submit --on-home">
                         <div class="form-submit__label">Найти билеты</div>
                     </button>
-                </form>
+               <!-- </form>-->
             </div>     
         </div> 
     </div>
@@ -120,9 +123,10 @@ if($_SESSION['user']){
     <?php
     }?>      
     </div>
-    <script src="btnbuyscr.js"></script>
+    
     <div id="notfounddiv" class="notfounddiv hide">ничего не найдено (</div>
-    <script src="scryptpopup.js"></script>
-    <script src="serchjs.js"></script>   
+    
+    
+      
 </body>
 </html>
