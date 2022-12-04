@@ -21,7 +21,9 @@
             "id"=>$user['User_Id'],
             "role"=>$user['Role_id'],
             "surname"=>$user['Surname'],
-            "login"=>$user['login']
+            "Name"=>$user['Name'],
+            "login"=>$user['login'],
+            "emails"=>$user['emails']
         ];
         if($_SESSION['user']['role']==1){
             header('Location: /adminPages.php');

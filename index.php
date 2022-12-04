@@ -41,8 +41,8 @@ if($_SESSION['user']){
             <div class="pop_up_body" id="pop_up_body">
                 <p class="text_autoriz" id="text_autoriz">Авторизация</p>
                 <form action="auth.php" method="post">
-                    <input type="text" name="login" id="login" placeholder="Логин">
-                    <input type="text" name="pass" id="password" placeholder="Пароль">
+                    <input type="text" name="login" id="login" placeholder="Логин" required>
+                    <input type="text" name="pass" id="password" placeholder="Пароль" required>
                     <button type="submit" class="btn_submit">Войти</button>                
                 </form>                 
             <div class="pop_up_close" id="pop_up_close">&#10006</div>

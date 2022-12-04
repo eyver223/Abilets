@@ -30,7 +30,7 @@ if(!$_SESSION['user']){
         <a  href="/" class="text_Home">Главная</a>
         <button id="open_pop_up" class="btnprofiles" type="button"  >        
            <img  width="35" height="35" src="profiles_ico.png" class="icon"></img>
-            <div class="btn_text" id="text_log_btn"><?= $_SESSION['user']['login'] ?></div>
+            <div class="btn_text" id="text_log_btn"><?= $_SESSION['user']['Name'] ?></div>
         </button>
     </div>
     <div class="rightmenu" id="rightmenu">
