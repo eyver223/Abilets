@@ -60,7 +60,7 @@ if(!$_SESSION['user']){
                 <option value="<?=$city2['id'];?>"><?=$city2['Name'];?></option>
                 <?php endwhile;?>
             </select>
-            <input type="date" id="datew" name="date" class="form_search3"/>
+            
             <div class="avia-form__submit">
                 <form  method="GET">
                     <button name="buttonSearch" id="buttonSearch" type="submit" class="button_form_submit --on-home">
@@ -100,9 +100,11 @@ if(!$_SESSION['user']){
                 ?>
                 <p data-datehow="<?php echo ($biletDates)?>"><?php echo $biletdeptime?></p>
                 <br>
-                <button id="buttonBuy" type="submit" class="button_Buy">
-                    <div class="form-submit__label">Купить</div>
-                </button>
+                <a href="buyMenu_nr.php?id=<?php echo $bilet['Bilets_id'];?>">
+                    <button id="buttonBuy" type="submit" class="button_Buy">
+                        <div class="form-submit__label">Купить</div>
+                    </button>
+                </a>
             </div>              
         </div>
     </div>

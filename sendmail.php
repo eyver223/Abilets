@@ -1,5 +1,6 @@
 <?
 //include "logindex.php"; 
+session_start();
 $link = mysqli_connect('localhost', 'root', '', 'AviaBD');
 if(!$link){
     die('ошибка подключения к базе данных');
@@ -9,6 +10,11 @@ $check=$_POST['checkb'];
  $surname=$_POST['surname'];
  $name=$_POST['name'];
  $email=$_POST['email'];
+ if($_SESSION['user']){ 
+    $email=$_SESSION['user']['email'];
+    $surname=$_SESSION['user']['Surname'];
+    $name=$_SESSION['user']['Name'];
+}
 $query=mysqli_query($link, "SELECT * FROM `Bilets` WHERE `Bilets_id`='$btn'");
 $res=$query->fetch_assoc();
 if(!$query){
@@ -46,8 +52,14 @@ else{
     if(mail($email, "Покупка на сайте 'Avia.ru'", $message, $headers)){
         //$today = date("Y-m-d"); 
         $today = date("m.d.y");
-        $addus="INSERT INTO `User` (`User_Id`, `Role_id`, `Surname`, `Name`, `login`, `password`, `email`) VALUES (NULL, '4', '$surname', ' $name', NULL, NULL, '$email');";
-        mysqli_query($link, $addus);
+        if($_SESSION['user']){ 
+           
+        }
+        else{
+            
+            $addus="INSERT INTO `User` (`User_Id`, `Role_id`, `Surname`, `Name`, `login`, `password`, `email`) VALUES (NULL, '4', '$surname', ' $name', NULL, NULL, '$email');";
+            mysqli_query($link, $addus);
+        }     
         $addord= "INSERT INTO `Orders` (`OrderId`, `email_u`, `Bilets_id`, `DateOrder`, `baggage`) VALUES (NULL, '$email', '$btn', '$today', '$bag');";
     mysqli_query($link, $addord);
         header('Location: thank-you.html');

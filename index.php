@@ -69,7 +69,6 @@ if($_SESSION['user']){
                 <option value="<?=$city2['id'];?>"><?=$city2['Name'];?></option>
                 <?php endwhile;?>
             </select>
-            <input type="date" id="datew" name="date" class="form_search3"/>
             <div class="avia-form__submit">
                 <form  method="GET">
                     <button name="buttonSearch" id="buttonSearch" type="submit" class="button_form_submit --on-home">

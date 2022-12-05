@@ -20,10 +20,10 @@
         $_SESSION['user']=[
             "id"=>$user['User_Id'],
             "role"=>$user['Role_id'],
-            "surname"=>$user['Surname'],
+            "Surname"=>$user['Surname'],
             "Name"=>$user['Name'],
             "login"=>$user['login'],
-            "emails"=>$user['emails']
+            "email"=>$user['email']
         ];
         if($_SESSION['user']['role']==1){
             header('Location: /adminPages.php');

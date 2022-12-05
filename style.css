@@ -42,19 +42,19 @@ font-size: 25px;
 }
 
 .page-header__form {
-    width: 100%;
+    /* width: 100%; */
     padding: 20 20px;
     position: relative;
-margin-left: 5%;
-margin-right: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .avia_form_home {
-    width: 100%;
+    /* width: 100%; */
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 44% 44% 10%;
     position: relative;
-    gap: 5px 4px;
+    gap: 1% 1%;
 }
 .form_search1 {
     border-bottom-left-radius: 10px;
@@ -62,13 +62,11 @@ margin-right: 5%;
     padding-left: 10px;
     border: 0px;
     font-size: 20px;
-  
 }
 .form_search2 {
     padding-left: 10px;
     border: 0px;
     font-size: 20px;
-  
 }
 .form_search3 {
     border-bottom-right-radius: 10px;
@@ -79,8 +77,9 @@ margin-right: 5%;
   
 }
 .avia-form__submit{
-    width: 100%;
-    text-align: left;
+    /* width: 100%; */
+    /* text-align: left; */
+    text-align: center;
 }
 .button_form_submit {
     padding: 5px;
@@ -182,7 +181,7 @@ height: 100%;
 .mainBilets{
     margin-top: 20px;
     margin-left: 5%;
-    margin-right: 10%;
+    margin-right: 5%;
     border-radius: 20px;
     background: #ffffff;
     height: 150px;
