@@ -16,14 +16,14 @@ $login = $_POST['login'];
         $error='вы не ввели данные, вернитесь обратно на страницу регистрации';
         exit;
     }   
-    else if(!$result=""){
+    else if($result->fetch_row()!=0){
         ?><script> alert("такой пользователь уже существует")</script> <?
         //header('Location: /registration.html');
         $er='такой пользователь уже существует, вернитесь обратно на страницу регистрации';
         exit;
         
     }
-    if(!$error && !$result=""){
+    else{
     $query= "INSERT INTO `User` (`User_Id`, `Role_id`, `Surname`, `Name`, `login`, `password`, `email`) VALUES (NULL, '3', '$surnames', ' $names', '$login', '$pass', '$emails');";
     mysqli_query($link, $query);
 
@@ -36,7 +36,7 @@ $login = $_POST['login'];
             "role"=>$user['Role_id'],
             "surname"=>$user['Surname'],
             "login"=>$user['login'],
-            "names"=>$user['names'],
+            "Name"=>$user['Name'],
             "emails"=>$user['emails']
         ];
         header('Location: ../logindex.php');

@@ -44,8 +44,8 @@ while($bilet2=mysqli_fetch_array($biletmas2)){
             $cost=$bilet2['Cost'];
             if(!$_SESSION['user']){  
                 ?>
-                    <input type="text" name="surname" id="surname_u" class="userfio" placeholder="Фамилия" required>
-                    <input type="text" name="name" id="name_u" class="userfio" placeholder="Имя" required>
+                    <input type="text"  pattern="^[А-Яа-яЁё]+$" minlength="2" name="surname" id="surname_u" class="userfio" placeholder="Фамилия" required>
+                    <input type="text"  pattern="^[А-Яа-яЁё]+$" minlength="2" name="name" id="name_u" class="userfio" placeholder="Имя" required>
                     <input type="email" name="email" id="emails" class="userfio" placeholder="Почта" required>
                     <input type="hidden" readonly name="cost" value="<?echo $cost?>">
                                    
