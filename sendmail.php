@@ -1,5 +1,5 @@
 <?
-include "logindex.php"; 
+//include "logindex.php"; 
 $link = mysqli_connect('localhost', 'root', '', 'AviaBD');
 if(!$link){
     die('ошибка подключения к базе данных');
@@ -29,9 +29,11 @@ else{
   $Times=$res['travel_time'];
     if($check){
        $cost= $res['Cost']+500; 
+       $bag="yes";
     }
     else{
         $cost= $res['Cost'];
+        $bag="no";
     }
    $title= $res['Title'];
 
@@ -42,6 +44,12 @@ else{
     "Reply-To: $to" . "\r\n" . 
     "X-Mailer: PHP/" . phpversion();
     if(mail($email, "Покупка на сайте 'Avia.ru'", $message, $headers)){
+        //$today = date("Y-m-d"); 
+        $today = date("m.d.y");
+        $addus="INSERT INTO `User` (`User_Id`, `Role_id`, `Surname`, `Name`, `login`, `password`, `email`) VALUES (NULL, '4', '$surname', ' $name', NULL, NULL, '$email');";
+        mysqli_query($link, $addus);
+        $addord= "INSERT INTO `Orders` (`OrderId`, `email_u`, `Bilets_id`, `DateOrder`, `baggage`) VALUES (NULL, '$email', '$btn', '$today', '$bag');";
+    mysqli_query($link, $addord);
         header('Location: thank-you.html');
     }
     else{
