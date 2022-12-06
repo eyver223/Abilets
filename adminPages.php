@@ -9,7 +9,6 @@ if(!$_SESSION['user']){
         header('Location: logindex.php');
     }
 }  
-
  ?>
  <!DOCTYPE html>
 <html lang="ru">
@@ -21,8 +20,23 @@ if(!$_SESSION['user']){
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="jquery.js"></script> 
 </head>
-<body class="body"  >  
-<?php
+<body class="body"> 
+<div class="pop_up" id="pop_upadd">
+        <div class="pop_up_container">
+            <div class="pop_up_body" id="pop_up_bodyadd">
+                <form action="" method="post">
+                    <input type="text" name="login" id="login" placeholder="название" required>
+                    <input type="text" name="pass" id="password" placeholder="цена" required>
+                    <input type="date" placeholder="дата отбытия">
+                    <input type="date">
+                    <button type="submit" class="btn_submit">добавить</button>                
+                </form>                 
+            <div class="pop_up_close" id="pop_up_closeadd">&#10006</div>
+                      
+            </div>           
+        </div>
+    </div> 
+<?
  if($mysql->connect_errno) exit('ошибка подключения к бд');
  $select="SELECT * FROM `CountryCity`";
  $cityes=$mysql->query($select);
@@ -49,7 +63,7 @@ if(!$_SESSION['user']){
         <h1 >Поиск авиабилетов</h1>
     </div>
     <div class="page-header__form">
-        <div action="/search" class="avia_form_home" >
+        <div action="/search" class="avia_form_admin" >
             <select id="selectFrom" name="CountryCityFrom_id" class="form_search1">
             <option hidden value="">откуда</option>
                 <?php while(($city=$cityes->fetch_assoc())>0):?>
@@ -62,14 +76,15 @@ if(!$_SESSION['user']){
                 <option value="<?=$city2['id'];?>"><?=$city2['Name'];?></option>
                 <?php endwhile;?>
             </select>
-            <input type="date" id="datew" name="date" class="form_search3"/>
             <div class="avia-form__submit">
                 <form  method="GET">
                     <button name="buttonSearch" id="buttonSearch" type="submit" class="button_form_submit --on-home">
                         <div class="form-submit__label">Найти билеты</div>
                     </button>
                 </form>
-            </div>     
+               
+            </div>   
+            <button type="button" id="open_pop_upadd" class="button_form_submit --on-home">добавить билет</button>  
         </div> 
     </div>
     <div id="page-bilets_list" class="page-bilets_list">
@@ -110,8 +125,10 @@ if(!$_SESSION['user']){
     <?php
     }?>      
     </div>
+    
     <div id="notfounddiv" class="notfounddiv hide">ничего не найдено (</div>
     <script src="scryptRighntMenu.js"></script>
+    <script src="scryptadd.js"></script>
     <script src="serchjs.js"></script>   
 </body>
 </html>
