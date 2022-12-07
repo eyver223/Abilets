@@ -52,30 +52,30 @@ if(!$_SESSION['user']){
     <div class="pop_up" id="pop_upadd">
         <div class="pop_up_container">
             <div class="pop_up_body" id="pop_up_bodyadd">
-                <form action="" method="post">
-                    <input type="text" name="login" id="login" placeholder="название" required>
-                    <input type="text" name="pass" id="password" placeholder="цена" required>
+                <form action="addbilets.php" method="post">
+                    <input type="text" name="title" id="login" placeholder="название" required>
+                    <input type="text" name="cost" id="password" placeholder="цена" required>
                     <div class="selectwf">
-                    <select id="selectFrom" name="CountryCityFrom_id" class="form_search1">
+                    <select id="selectFrom" name="CountryCityFrom" class="form_search1">
                         <option hidden value="">откуда</option>
                             <?php while(($city=$cityes->fetch_assoc())>0):?>
-                        <option value="<?=$city['id'];?>"><?=$city['Name'];?></option>
+                                <option value="<?=$city['id'];?>"><?=$city['Name'];?></option>
                             <?php endwhile;?>
                     </select>
-                    <select id="selectWhere" name="CountryCityWhere_id" class="form_search2">
+                    <select id="selectWhere" name="CountryCityWhere" class="form_search2">
                         <option hidden value="">куда</option>
                             <?php while(($city2=$cityes2->fetch_assoc())>0):?>
-                        <option value="<?=$city2['id'];?>"><?=$city2['Name'];?></option>
+                                <option value="<?=$city2['id'];?>"><?=$city2['Name'];?></option>
                             <?php endwhile;?>
                     </select>
                     </div>
                     <div>
                         <p class="apopuptext">дата и время отбытия</p>
-                        <input class="inputanew" type="datetime-local" >
+                        <input class="inputanew" name="inputdatetime" type="datetime-local" >
                     </div>
                     <div>
                         <p class="apopuptext">время пути</p>
-                        <input class="inputanew" type="time" >
+                        <input class="inputanew" name="time" type="time" >
                     </div>
                     <button type="submit" class="btn_submit">добавить</button>                
                 </form>                 
