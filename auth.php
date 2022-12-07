@@ -20,11 +20,16 @@
         $_SESSION['user']=[
             "id"=>$user['User_Id'],
             "role"=>$user['Role_id'],
-            "surname"=>$user['Surname'],
-            "login"=>$user['login']
+            "Surname"=>$user['Surname'],
+            "Name"=>$user['Name'],
+            "login"=>$user['login'],
+            "email"=>$user['email']
         ];
         if($_SESSION['user']['role']==1){
             header('Location: /adminPages.php');
+        }
+        else if($_SESSION['user']['role']==2){
+            header('Location: /managerPages.php');
         }
         else{
             header('Location: logindex.php');
