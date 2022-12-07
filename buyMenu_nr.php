@@ -22,6 +22,7 @@ while($bilet2=mysqli_fetch_array($biletmas2)){
     <div class="pop_up_container">
         <div class="pop_up_body" id="pop_up_body">
             <h1 id="titleb"><? echo $bilet2['Title']?></h1>
+            <form action="sendmail.php" method="POST">
             <div class="contentbuy">
                 <p>откуда-куда</p>
                 <p><?echo $bilet2['from']?> - <?echo $bilet2['wheres']?></p>
@@ -31,29 +32,33 @@ while($bilet2=mysqli_fetch_array($biletmas2)){
             <div class="bagage">
                 <p class="textbagage">+ 500 ₽</p>
                 <label class="switch">
-                    <input type="checkbox" class="cb_baggage" id="cb_baggage">
+                    <input type="checkbox" class="cb_baggage" name="checkb" id="cb_baggage" onclick="checkCB()">
                     <span class="slider round"></span>
                 </label>
             </div>
             <p>Время пути</p>
             <p><?echo $bilet2['travel_time']?></p>
-            <?if(!$_SESSION['user']){
-               ?><form action="">
-                <input type="text">
-               </form>
-               <? 
+            </div> 
+            
+            <?
+            $cost=$bilet2['Cost'];
+            if(!$_SESSION['user']){  
+                ?>
+                    <input type="text"  pattern="^[А-Яа-яЁё]+$" minlength="2" name="surname" id="surname_u" class="userfio" placeholder="Фамилия" required>
+                    <input type="text"  pattern="^[А-Яа-яЁё]+$" minlength="2" name="name" id="name_u" class="userfio" placeholder="Имя" required>
+                    <input type="email" name="email" id="emails" class="userfio" placeholder="Почта" required>
+                    <input type="hidden" readonly name="cost" value="<?echo $cost?>">
+                                   
+                <?
+            }
+            else{
             }
             ?>
-            </div>
-            <?
-            $cost=$bilet2['Cost']
-            ?>
-            <div>
-                <button id="button_Buynow" type="submit" class="button_Buynow" data-id="<?php echo $bilet['Bilets_id'];?>">
-                    <div class="form-submit__label" id="buycost">Купить за <?echo $bilet2['Cost'];?></div>
-                </button>
-                
-            </div>                 
+                <button id="button_Buynow" type="submit" name="btnbuyandsend" value="<?echo $bilet2['Bilets_id']?>" class="button_Buynow" data-id="<?php echo $bilet['Bilets_id'];?>">
+                    <div class="form-submit__label" id="buycost"  >Купить за <?echo $cost?></div>
+                </button>          
+            </form>
+
         <div class="reg_close" id="reg_close">
             <a href="index.php">&#10006</a></div>           
         </div>           
@@ -61,8 +66,22 @@ while($bilet2=mysqli_fetch_array($biletmas2)){
 </div>
 <?
 }
-
 ?>
-    
+    <script>
+        function checkCB(){
+            console.log('y');
+               var jsvar='<?echo $cost?>';
+               var jsvarsum='<?echo $cost+500?>';
+            var cb=document.getElementById('cb_baggage');
+            if(cb.checked==true){
+                document.getElementById('buycost').innerHTML='';         
+                document.getElementById('buycost').innerHTML+='Купить за '+jsvarsum +".00";    
+            }
+            else{ 
+                document.getElementById('buycost').innerHTML='';      
+                document.getElementById('buycost').innerHTML+='Купить за '+jsvar;
+            }
+        }
+    </script>
 </body>
 </html>
