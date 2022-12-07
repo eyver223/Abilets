@@ -42,19 +42,26 @@ font-size: 25px;
 }
 
 .page-header__form {
-    width: 100%;
+    /* width: 100%; */
     padding: 20 20px;
     position: relative;
-margin-left: 5%;
-margin-right: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .avia_form_home {
-    width: 100%;
+    /* width: 100%; */
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 44% 44% 10%;
     position: relative;
-    gap: 5px 4px;
+    gap: 1% 1%;
+}
+.avia_form_admin{
+    /* width: 100%; */
+    display: grid;
+    grid-template-columns: 39% 39% 10% 10%;
+    position: relative;
+    gap: 0% 0.5%;
 }
 .form_search1 {
     border-bottom-left-radius: 10px;
@@ -62,25 +69,23 @@ margin-right: 5%;
     padding-left: 10px;
     border: 0px;
     font-size: 20px;
-  
 }
 .form_search2 {
     padding-left: 10px;
     border: 0px;
     font-size: 20px;
-  
 }
 .form_search3 {
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     padding-left: 10px;
     border: 0px;
-    font-size: 20px;
-  
+    font-size: 20px;  
 }
 .avia-form__submit{
-    width: 100%;
-    text-align: left;
+    /* width: 100%; */
+    /* text-align: left; */
+    text-align: center; 
 }
 .button_form_submit {
     padding: 5px;
@@ -89,7 +94,7 @@ border: 0px;
 color: white;
 cursor: pointer;
 border-radius: 10px;
-
+font-size: 20px;
 }
 .form-submit__label {
 padding-top: 10%;
@@ -182,7 +187,7 @@ height: 100%;
 .mainBilets{
     margin-top: 20px;
     margin-left: 5%;
-    margin-right: 10%;
+    margin-right: 5%;
     border-radius: 20px;
     background: #ffffff;
     height: 150px;
@@ -267,4 +272,41 @@ cursor: pointer;
 }
 .menulist{
     display: grid;
+}
+p.apopuptext {
+    font-size: 15px;
+    margin-left: 0px;
+    display: inline;
+}
+input.inputanew {
+    margin: 0px auto 0px auto;
+}
+.selectwf {
+    display: grid;
+    margin: 10px auto 10px auto;
+}
+
+.selectwf select{
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    padding-left: 10px;
+    border: 0px;
+    font-size: 20px;
+    background-color: #e5e5e5;
+    margin: 5px 13% 5px 13%;
+}
+.linkorder{
+color: white;
+text-decoration: none;
+}
+
+.tableman{
+    margin: 1% auto;
+}
+.tr_table {
+    text-align: center;
+    font-size: 42px;
+}
+.linkback{
+    font-size: 28px;
 }
