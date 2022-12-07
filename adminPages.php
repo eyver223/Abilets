@@ -1,15 +1,11 @@
 <?php
 session_start();
 include "connectbd.php"; 
-if(!$_SESSION['user']){
     if($_SESSION['user']['role']==1){
-        header('Location: /adminPages.php');
     }
     else{
-        header('Location: logindex.php');
-    }
-}  
-
+        header('Location: index.php');
+    }  
  ?>
  <!DOCTYPE html>
 <html lang="ru">
@@ -21,13 +17,15 @@ if(!$_SESSION['user']){
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="jquery.js"></script> 
 </head>
-<body class="body"  >  
-<?php
+<body class="body"> 
+
+<?
  if($mysql->connect_errno) exit('ошибка подключения к бд');
  $select="SELECT * FROM `CountryCity`";
  $cityes=$mysql->query($select);
- $select2="SELECT * FROM `CountryCity`";
- $cityes2=$mysql->query($select2);
+ $cityes2=$mysql->query($select);
+ $cityes3=$mysql->query($select);
+ $cityes4=$mysql->query($select);
 ?> 
     <div class="button1">
         <a  href="/" class="text_Home">Главная</a>
@@ -48,28 +46,66 @@ if(!$_SESSION['user']){
     <div class="header__title">
         <h1 >Поиск авиабилетов</h1>
     </div>
+
+    <div class="pop_up" id="pop_upadd">
+        <div class="pop_up_container">
+            <div class="pop_up_body" id="pop_up_bodyadd">
+                <form action="addbilets.php" method="post">
+                    <input type="text" name="title" id="login" placeholder="название" required>
+                    <input type="number" min="0" step="1"  name="cost" id="password" placeholder="цена" required>
+                    <div class="selectwf">
+                    <select id="selectFrom" name="CountryCityFrom"  class="form_search1" required>
+                        <option hidden value="">откуда</option>
+                            <?php while(($city=$cityes->fetch_assoc())>0):?>
+                                <option value="<?=$city['CountryCity_id'];?>"><?=$city['Name'];?></option>
+                            <?php endwhile;?>
+                    </select>
+                    <select id="selectWhere" name="CountryCityWhere" class="form_search2" required>
+                        <option hidden value="">куда</option>
+                            <?php while(($city2=$cityes2->fetch_assoc())>0):?>
+                                <option value="<?=$city2['CountryCity_id'];?>"><?=$city2['Name'];?></option>
+                            <?php endwhile;?>
+                    </select>
+                    </div>
+                    <div>
+                        <p class="apopuptext">дата и время отбытия</p>
+                        <input class="inputanew" name="inputdatetime" type="datetime-local" >
+                    </div>
+                    <div>
+                        <p class="apopuptext">время пути</p>
+                        <input class="inputanew" name="time" type="time" >
+                    </div>
+                    <button type="submit" class="btn_submit">добавить</button>                
+                </form>                 
+            <div class="pop_up_close" id="pop_up_closeadd">&#10006</div>
+                      
+            </div>           
+        </div>
+    </div> 
+
     <div class="page-header__form">
-        <div action="/search" class="avia_form_home" >
+        <div action="/search" class="avia_form_admin" >
             <select id="selectFrom" name="CountryCityFrom_id" class="form_search1">
             <option hidden value="">откуда</option>
-                <?php while(($city=$cityes->fetch_assoc())>0):?>
-                <option value="<?=$city['id'];?>"><?=$city['Name'];?></option>
+                <?php while(($city3=$cityes3->fetch_assoc())>0):?>
+                <option value="<?=$city3['id'];?>"><?=$city3['Name'];?></option>
                 <?php endwhile;?>
             </select>
             <select id="selectWhere" name="CountryCityWhere_id" class="form_search2">
             <option hidden value="">куда</option>
-                <?php while(($city2=$cityes2->fetch_assoc())>0):?>
-                <option value="<?=$city2['id'];?>"><?=$city2['Name'];?></option>
+                <?php while(($city4=$cityes4->fetch_assoc())>0):?>
+                <option value="<?=$city4['id'];?>"><?=$city4['Name'];?></option>
                 <?php endwhile;?>
             </select>
-            <input type="date" id="datew" name="date" class="form_search3"/>
             <div class="avia-form__submit">
                 <form  method="GET">
                     <button name="buttonSearch" id="buttonSearch" type="submit" class="button_form_submit --on-home">
                         <div class="form-submit__label">Найти билеты</div>
                     </button>
                 </form>
-            </div>     
+               
+            </div>   
+            <button type="button" id="open_pop_upadd" class="button_form_submit --on-home">добавить билет</button>  
         </div> 
     </div>
     <div id="page-bilets_list" class="page-bilets_list">
@@ -101,17 +137,22 @@ if(!$_SESSION['user']){
                 ?>
                 <p data-datehow="<?php echo ($biletDates)?>"><?php echo $biletdeptime?></p>
                 <br>
-                <button id="buttonBuy" type="submit" class="button_Buy">
-                    <div class="form-submit__label">изменить</div>
-                </button>
+                <form action="deleteBilets.php" method="POST">
+                    <button id="buttondel" value="<?php echo $bilet['Bilets_id'];?>" name="btndel" type="submit" class="button_Buy">
+                        <div class="form-submit__label">удалить</div>
+                    </button>
+                </form>
+                
             </div>              
         </div>
     </div>
     <?php
     }?>      
     </div>
+    
     <div id="notfounddiv" class="notfounddiv hide">ничего не найдено (</div>
     <script src="scryptRighntMenu.js"></script>
+    <script src="scryptadd.js"></script>
     <script src="serchjs.js"></script>   
 </body>
 </html>
