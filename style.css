@@ -295,3 +295,18 @@ input.inputanew {
     background-color: #e5e5e5;
     margin: 5px 13% 5px 13%;
 }
+.linkorder{
+color: white;
+text-decoration: none;
+}
+
+.tableman{
+    margin: 1% auto;
+}
+.tr_table {
+    text-align: center;
+    font-size: 42px;
+}
+.linkback{
+    font-size: 28px;
+}

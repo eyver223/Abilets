@@ -4,7 +4,13 @@ include "connectbd.php";
 if(!$_SESSION['user']){
     header('Location: index.php');
 }
-   
+else if($_SESSION['user']['role']==1){
+    header('Location: adminPages.php');
+}
+else if($_SESSION['user']['role']==2){
+    header('Location: managerPages.php');
+}
+else
  ?>
  <!DOCTYPE html>
 <html lang="ru">
