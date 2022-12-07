@@ -1,6 +1,7 @@
-var btnserch=document.getElementById('buttonSearch');
+const btnserch=document.getElementById('buttonSearch');
 var selectFrom = document.getElementById("selectFrom");
 var selectWhere = document.getElementById("selectWhere");
+    //var selecDate = document.getElementById("datew");
 const mainB=document.getElementById('mainBilets');
 const nt=document.getElementById('notfounddiv');
 
@@ -44,7 +45,9 @@ $(function(){
                         console.log("показ куда");  
                     }
                 }  
-            }               
+            }
+            
+            
         });
         var hd= $('#page-bilets_list').height();
        if(hd<=0){
@@ -52,7 +55,7 @@ $(function(){
        }
        else{
        $('#notfounddiv').addClass('hide')
-       } 
+       }  
     });
 });
     

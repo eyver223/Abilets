@@ -4,7 +4,13 @@ include "connectbd.php";
 if(!$_SESSION['user']){
     header('Location: index.php');
 }
-   
+else if($_SESSION['user']['role']==1){
+    header('Location: adminPages.php');
+}
+else if($_SESSION['user']['role']==2){
+    header('Location: managerPages.php');
+}
+else
  ?>
  <!DOCTYPE html>
 <html lang="ru">
@@ -30,7 +36,7 @@ if(!$_SESSION['user']){
         <a  href="/" class="text_Home">Главная</a>
         <button id="open_pop_up" class="btnprofiles" type="button"  >        
            <img  width="35" height="35" src="profiles_ico.png" class="icon"></img>
-            <div class="btn_text" id="text_log_btn"><?= $_SESSION['user']['login'] ?></div>
+            <div class="btn_text" id="text_log_btn"><?= $_SESSION['user']['Name'] ?></div>
         </button>
     </div>
     <div class="rightmenu" id="rightmenu">
@@ -60,7 +66,7 @@ if(!$_SESSION['user']){
                 <option value="<?=$city2['id'];?>"><?=$city2['Name'];?></option>
                 <?php endwhile;?>
             </select>
-            <input type="date" id="datew" name="date" class="form_search3"/>
+            
             <div class="avia-form__submit">
                 <form  method="GET">
                     <button name="buttonSearch" id="buttonSearch" type="submit" class="button_form_submit --on-home">
@@ -100,9 +106,11 @@ if(!$_SESSION['user']){
                 ?>
                 <p data-datehow="<?php echo ($biletDates)?>"><?php echo $biletdeptime?></p>
                 <br>
-                <button id="buttonBuy" type="submit" class="button_Buy">
-                    <div class="form-submit__label">Купить</div>
-                </button>
+                <a href="buyMenu_nr.php?id=<?php echo $bilet['Bilets_id'];?>">
+                    <button id="buttonBuy" type="submit" class="button_Buy">
+                        <div class="form-submit__label">Купить</div>
+                    </button>
+                </a>
             </div>              
         </div>
     </div>

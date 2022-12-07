@@ -41,8 +41,8 @@ if($_SESSION['user']){
             <div class="pop_up_body" id="pop_up_body">
                 <p class="text_autoriz" id="text_autoriz">Авторизация</p>
                 <form action="auth.php" method="post">
-                    <input type="text" name="login" id="login" placeholder="Логин">
-                    <input type="text" name="pass" id="password" placeholder="Пароль">
+                    <input type="text" name="login" id="login" placeholder="Логин" required>
+                    <input type="text" name="pass" id="password" placeholder="Пароль" required>
                     <button type="submit" class="btn_submit">Войти</button>                
                 </form>                 
             <div class="pop_up_close" id="pop_up_close">&#10006</div>
@@ -69,9 +69,8 @@ if($_SESSION['user']){
                 <option value="<?=$city2['id'];?>"><?=$city2['Name'];?></option>
                 <?php endwhile;?>
             </select>
-            <input type="date" id="datew" name="date" class="form_search3"/>
             <div class="avia-form__submit">
-                <form  >
+                <form  method="GET">
                     <button name="buttonSearch" id="buttonSearch" type="submit" class="button_form_submit --on-home">
                         <div class="form-submit__label">Найти билеты</div>
                     </button>
@@ -120,9 +119,11 @@ if($_SESSION['user']){
     <?php
     }?>      
     </div>
+    
     <script src="btnbuyscr.js"></script>
     <div id="notfounddiv" class="notfounddiv hide">ничего не найдено (</div>
     <script src="scryptpopup.js"></script>
-    <script src="serchjs.js"></script>   
+    <script src="serchjs.js"></script> 
+      
 </body>
 </html>
